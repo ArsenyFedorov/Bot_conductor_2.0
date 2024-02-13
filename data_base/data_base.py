@@ -2,7 +2,7 @@ import sqlite3
 
 
 class DataBase:
-    db_path = "data_base\sport.db"
+    db_path = "data_base.db"
 
     @staticmethod
     def execute(sql: str, parameters: tuple = tuple(),

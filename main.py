@@ -3,6 +3,7 @@ import os
 import asyncio
 from handlers import *
 from data_base.record import Record
+from data_base.user import User
 
 bot = Bot(os.getenv("TOKEN"))
 dp = Dispatcher()
@@ -15,7 +16,9 @@ def on_start():
     print("База данных", end=" ")
     try:
         Record.great_table()
-        print("Подключено")
+        print("Подключено", end=" ")
+        User.great_table()
+        print("И эта тоже")
     except:
         print("Не подключено")
 
