@@ -6,16 +6,12 @@ import datetime
 
 class SimpleCallback(CallbackData, prefix="scb"):
     callback: str = ""
-    date: datetime
+    status: str = ""
+    date: str = ""
 
 
-def kb_main(date_day: datetime):
+def kb_main(day: datetime):
     keyboard = InlineKeyboardBuilder()
-    keyboard.button(text=accept, callback_data=SimpleCallback(callback="accept", date=date_day))
-    keyboard.button(text=reject, callback_data=SimpleCallback(callback="reject", date=date_day))
+    keyboard.button(text=accept, callback_data=SimpleCallback(callback="edit", status=accept, date=str(day)))
+    keyboard.button(text=reject, callback_data=SimpleCallback(callback="edit", status=reject, date=str(day)))
     return keyboard.as_markup()
-
-
-
-
-

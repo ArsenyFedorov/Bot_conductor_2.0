@@ -21,14 +21,14 @@ class Record(DataBase):
         return records
 
     def save(self, date: datetime, status: str):
-        sql = """UPDATE record_history SET datetime=? WHERE status=?"""
-        self.execute(sql, (date, status), commit=True)
+        sql = """UPDATE record_history SET status=? WHERE datetime=?"""
+        self.execute(sql, (status, date), commit=True)
 
     def create(self, tg_id: int, name: str, date, status: str):
-        sql = """SELECT * FROM record_history WHERE datetime=?"""
-        data = self.execute(sql, (date,), fetchone=True)
+        sql = """SELECT * FROM record_history WHERE datetime=? AND tg_id=?"""
+        data = self.execute(sql, (date, tg_id), fetchone=True)
         if data:
-            print("Такой пользователь уже есть ) ")
+            print("Пользователь с таким занятием уже есть )")
         else:
             sql = """INSERT INTO record_history(tg_id,name,datetime, status) VALUES (?,?,?,?)"""
             self.execute(sql, (tg_id, name, date, status), commit=True)

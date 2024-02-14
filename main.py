@@ -1,4 +1,4 @@
-from aiogram import Dispatcher, Bot
+from aiogram import Dispatcher
 import os
 import asyncio
 from handlers import *
@@ -18,7 +18,7 @@ def on_start():
         Record.great_table()
         print("Подключено", end=" ")
         User.great_table()
-        print("И эта тоже")
+        print(" и эта тоже ")
     except:
         print("Не подключено")
 
